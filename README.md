@@ -1862,17 +1862,27 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 57:** What are two reasons to keep an action in its own repository instead of bundling it with other application code? (Choose two)
 
 **Options:**
-- It widens the scope of the code base for developers fixing issues and extending the action.
-- It decouples the action's versioning from the versioning of other application code.
-- It allows sharing workflow secrets with other users.
-- It makes the `action.yml` file optional.
-- It makes it easier for the GitHub community to discover the action.
+
+**(A)** It widens the scope of the code base for developers fixing issues and extending the action.
+
+**(B)** It decouples the action's versioning from the versioning of other application code.
+
+**(C)** It allows sharing workflow secrets with other users.
+
+**(D)** It makes the `action.yml` file optional.
+
+**(E)** It makes it easier for the GitHub community to discover the action.
 
 **Correct Answers:**
-- **It decouples the action's versioning from the versioning of other application code.**
-- **It makes it easier for the GitHub community to discover the action.**
 
-**Supporting Statement:** Keeping an action in its own repository allows for independent versioning and makes it more discoverable by the GitHub community.
+**(B)** It decouples the action's versioning from the versioning of other application code.
+
+**(E)** It makes it easier for the GitHub community to discover the action.
+
+**Explanation:**
+
+-Decoupling versioning allows the action to be updated independently of the application code.
+-Keeping it separate makes it easier to find and reuse in the GitHub community.
 
 ---
 
@@ -1881,15 +1891,22 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 58:** Which command can you include in your workflow file to set the output parameter for an action?
 
 **Options:**
-- `echo "::add-mask::ACTION_COLOR"`
-- `echo "action_color=purple" >> $GITHUB_OUTPUT`
-- `echo "::debug::action_color=purple"`
-- `echo "action_color=purple" >> $GITHUB_ENV`
+
+**(A)** `echo "::add-mask::ACTION_COLOR"`
+
+**(B)** `echo "action_color=purple" >> $GITHUB_OUTPUT`
+
+**(C)** `echo "::debug::action_color=purple"`
+
+**(D)** `echo "action_color=purple" >> $GITHUB_ENV`
 
 **Correct Answer:**
-- `echo "action_color=purple" >> $GITHUB_OUTPUT`
 
-**Supporting Statement:** This command writes the output parameter "action_color" with the value "purple" to the `$GITHUB_OUTPUT` file, making it available to subsequent steps or other actions.
+**(B)** `echo "action_color=purple" >> $GITHUB_OUTPUT`
+
+**Explanation:**
+
+-Writing to $GITHUB_OUTPUT sets the output variable for use in later steps.
 
 ---
 
@@ -1898,19 +1915,27 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 59:** As a developer, you are configuring GitHub Actions to deploy VMs to production. A member of the VM Ops team must provide approval before deployment occurs. Which of the following steps should you take? (Choose two)
 
 **Options:**
-- Navigate to the repository settings and create a Production environment with the VM Ops team as a required reviewer.
-- Navigate to the organization settings and create a Production environment with the VM Ops team as a required reviewer.
-- Add the VMs to the environment.
-- Specify the VM Ops team as the owner of the environment.
-- Specify the environment named Production in the workflow jobs that deploy to the VMs.
+
+**(A)** Navigate to the repository settings and create a Production environment with the VM Ops team as a required reviewer.
+
+**(B)** Navigate to the organization settings and create a Production environment with the VM Ops team as a required reviewer.
+
+**(C)** Add the VMs to the environment.
+
+**(D)** Specify the VM Ops team as the owner of the environment.
+
+**(E)** Specify the environment named Production in the workflow jobs that deploy to the VMs.
 
 **Correct Answers:**
-- **Navigate to the organization settings and create a Production environment with the VM Ops team as a required reviewer.**
-- **Specify the environment named Production in the workflow jobs that deploy to the VMs.**
 
-**Supporting Statement:** 
-* Creating a production environment with required reviewers in the organization settings allows for centralized management of deployment approvals.
-* Specifying the environment in the workflow jobs ensures that the deployment process is subject to the approval requirements.
+**(A)** Navigate to the repository settings and create a Production environment with the VM Ops team as a required reviewer.
+
+**(E)** Specify the environment named Production in the workflow jobs that deploy to the VMs.
+
+**Explanation:**
+
+-Using protected environments ensures deployments require approval before running.
+-Specifying the environment in the workflow enforces the restriction.
 
 ---
 
@@ -1919,16 +1944,27 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 60:** As a developer, you need to use GitHub Actions to deploy a microservice that requires runtime access to a secure token used by a variety of other microservices managed by different teams in different repos. To minimize management overhead and ensure the token is secure, which mechanisms should you use and access the token? (Choose two)
 
 **Options:**
-- Store the token as an organizational-level encrypted secret in GitHub. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.
-- Store the token in a configuration file in a private repository. Use GitHub Actions to deploy the configuration file to the runtime environment.
-- Store the token as a GitHub encrypted secret in the same repo as the code. Create a reusable custom GitHub Action to access the token by the microservice at runtime.
-- Use a corporate non-GitHub secret store (e.g., Hash Corp Vault) to store the token. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.
-- Store the token as a GitHub encrypted secret in the same repo as the code. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.
+
+**(A)** Store the token as an organizational-level encrypted secret in GitHub. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.
+
+**(B)** Store the token in a configuration file in a private repository. Use GitHub Actions to deploy the configuration file to the runtime environment.
+
+**(C)** Store the token as a GitHub encrypted secret in the same repo as the code. Create a reusable custom GitHub Action to access the token by the microservice at runtime.
+
+**(D)** Use a corporate non-GitHub secret store (e.g., Hash Corp Vault) to store the token. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.
+
+**(E)** Store the token as a GitHub encrypted secret in the same repo as the code. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.
 
 **Correct Answers:**
-- **Store the token as an organizational-level encrypted secret in GitHub. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.**
-- **Use a corporate
 
+**(A)** Store the token as an organizational-level encrypted secret in GitHub.
+
+**(D)** Use a corporate non-GitHub secret store (e.g., HashiCorp Vault).
+
+**Explanation:**
+
+-Organizational-level secrets allow multiple repositories to use the token securely.
+-External secret stores add an extra layer of security and central management.
 ---
 
 
@@ -1936,19 +1972,28 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 61:** As a developer, you need to use GitHub Actions to deploy a microservice that requires runtime access to a secure token used by a variety of other microservices managed by different teams in different repos. To minimize management overhead and ensure the token is secure, which mechanisms should you use and access the token? (Choose two)
 
 **Options:**
-- Store the token as an organizational-level encrypted secret in GitHub. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.
-- Store the token in a configuration file in a private repository. Use GitHub Actions to deploy the configuration file to the runtime environment.
-- Store the token as a GitHub encrypted secret in the same repo as the code. Create a reusable custom GitHub Action to access the token by the microservice at runtime.
-- Use a corporate non-GitHub secret store (e.g., Hash Corp Vault) to store the token. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.
-- Store the token as a GitHub encrypted secret in the same repo as the code. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.
+
+**(A)** Store the token as an organizational-level encrypted secret in GitHub. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.
+
+**(B)** Store the token in a configuration file in a private repository. Use GitHub Actions to deploy the configuration file to the runtime environment.
+
+**(C)** Store the token as a GitHub encrypted secret in the same repo as the code. Create a reusable custom GitHub Action to access the token by the microservice at runtime.
+
+**(D)** Use a corporate non-GitHub secret store (e.g., Hash Corp Vault) to store the token. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.
+
+**(E)** Store the token as a GitHub encrypted secret in the same repo as the code. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.
 
 **Correct Answers:**
-- **Store the token as an organizational-level encrypted secret in GitHub. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.**
-- **Use a corporate non-GitHub secret store (e.g., Hash Corp Vault) to store the token. During deployment, use GitHub Actions to store the secret in an environment variable that can be accessed at runtime.**
 
-**Supporting Statement:** 
-* Storing the token at the organizational level provides central management and control.
-* Using a dedicated secret store like Hashicorp Vault offers enhanced security and centralized management for sensitive information.
+**(A)** Store the token as an organizational-level encrypted secret in GitHub.
+
+**(D)** Use a corporate non-GitHub secret store (e.g., HashiCorp Vault).
+
+**Explanation:**
+
+-Organizational-level secrets allow multiple repositories to use the token securely.
+-External secret stores add an extra layer of security and central management.
+
 
 ---
 
@@ -1957,18 +2002,28 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 62:** You installed specific software on a Linux self-hosted runner. You have users with workflows that need to be able to use this identified custom software. Which steps should you perform to prepare the runner and your users to run these workflows? (Choose two)
 
 **Options:**
-- Inform users to identify the runner based on the group.
-- Create the group `custom-software-on-linux` and move the runner into the group.
-- Inform users to identify the runner with the labels `custom-software` and `linux`.
-- Configure the webhook and network to enable GitHub to trigger workflows.
-- Add the label `custom-software` to the runner.
-- Add the label `linux` to the runner.
+
+**(A)** Inform users to identify the runner based on the group.
+
+**(B)** Create the group `custom-software-on-linux` and move the runner into the group.
+
+**(C)** Inform users to identify the runner with the labels `custom-software` and `linux`.
+
+**(D)** Configure the webhook and network to enable GitHub to trigger workflows.
+
+**(E)** Add the label `custom-software` to the runner.
+
+**(F)** Add the label `linux` to the runner.
 
 **Correct Answers:**
-- **Create the group `custom-software-on-linux` and move the runner into the group.**
-- **Inform users to identify the runner based on the group.**
 
-**Supporting Statement:** Organizing runners into groups based on their capabilities (like installed software) allows users to easily identify and select the appropriate runner for their workflows.
+**(B)** Create the group `custom-software-on-linux` and move the runner into the group.
+
+**(E)** Add the label `custom-software` to the runner.
+
+**Explanation:**
+
+-Grouping and labeling runners help users target the correct environment.
 
 ---
 
@@ -1977,16 +2032,24 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 63:** What is the proper syntax to reference the system-provided run number variable?
 
 **Options:**
-- `$GITHUB_RUN_NUMBER`
-- `${{ GITHUB_RUN_NUMBER }}`
-- `$github.run_number`
-- `${{ env.GITHUB_RUN_NUMBER }}`
-- `${{ var.GITHUB_RUN_NUMBER }}`
+
+**(A)** `$GITHUB_RUN_NUMBER`
+
+**(B)** `${{ GITHUB_RUN_NUMBER }}`
+
+**(C)** `$github.run_number`
+
+**(D)** `${{ env.GITHUB_RUN_NUMBER }}`
+
+**(E)** `${{ var.GITHUB_RUN_NUMBER }}`
 
 **Correct Answer:**
-- `${{ GITHUB_RUN_NUMBER }}`
 
-**Supporting Statement:** This is the correct syntax to access the value of the `GITHUB_RUN_NUMBER` environment variable within a workflow file.
+**(B)** `${{ GITHUB_RUN_NUMBER }}`
+
+**Explanation:**
+
+-GITHUB_RUN_NUMBER stores the workflow run number, and ${{ ... }} syntax is used for expressions.
 
 ---
 
@@ -1995,17 +2058,24 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 64:** What are the mandatory requirements for publishing GitHub Actions to the GitHub Marketplace? (Choose two)
 
 **Options:**
-- Each repository can contain a collection of actions as long as they are under the same Marketplace category.
-- The action's name cannot match a user or organization on GitHub unless the user or organization owns the action.
-- The action's metadata file must be in the root directory of the repository.
-- The action can be either in a public or private repository.
-- The name should match with one of the existing GitHub Marketplace categories.
+
+**(A)** Each repository can contain a collection of actions as long as they are under the same Marketplace category.
+
+**(B)** The action's name cannot match a user or organization on GitHub unless the user or organization owns the action.
+
+**(C)** The action's metadata file must be in the root directory of the repository.
+
+**(D)** The action can be either in a public or private repository.
+
+**(E)** The name should match with one of the existing GitHub Marketplace categories.
 
 **Correct Answers:**
-- **The action's metadata file must be in the root directory of the repository.**
-- **The action's name cannot match a user or organization on GitHub unless the user or organization owns the action.**
 
-**Supporting Statement:** These are two of the essential requirements for publishing Actions to the Marketplace.
+**(B)** The action's name cannot match a user or organization on GitHub unless the user or organization owns the action.
+
+**(C)** The action's metadata file must be in the root directory of the repository.
+
+
 
 ---
 
@@ -2014,15 +2084,20 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 65:** Which default environment variable specifies the branch or tag that triggered a workflow?
 
 **Options:**
-- `ENV_BRANCH`
-- `GITHUB_BRANCH`
-- `GITHUB_TAG`
-- `GITHUB_REF`
+
+**(A)** `ENV_BRANCH`
+
+**(B)** `GITHUB_BRANCH`
+
+**(C)** `GITHUB_TAG`
+
+**(D)** `GITHUB_REF`
 
 **Correct Answer:**
-- **GITHUB_REF**
 
-**Supporting Statement:** The `GITHUB_REF` environment variable contains the full Git reference (e.g., `refs/heads/main`, `refs/tags/v1.0`) that triggered the workflow.
+**(D)** `GITHUB_REF`
+
+
 
 ---
 
@@ -2031,19 +2106,32 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 66:** As a developer, you need to make sure that only actions from trusted sources are available for use in your GitHub Enterprise Cloud organization. (Choose three)
 
 **Options:**
-- Actions can be published to an internal marketplace.
-- Actions created by GitHub are automatically enabled and cannot be disabled.
-- GitHub-verified actions can be collectively enabled for use in the enterprise.
-- Specific actions can individually be enabled for the organization, including version information.
-- Individual third-party actions enabled with a specific tag will prevent updated versions of the action from introducing vulnerabilities.
-- Actions can be restricted to only those available in the enterprise.
+
+**(A)** Actions can be published to an internal marketplace.
+
+**(B)** Actions created by GitHub are automatically enabled and cannot be disabled.
+
+**(C)** GitHub-verified actions can be collectively enabled for use in the enterprise.
+
+**(D)** Specific actions can individually be enabled for the organization, including version information.
+
+**(E)** Individual third-party actions enabled with a specific tag will prevent updated versions of the action from introducing vulnerabilities.
+
+**(F)** Actions can be restricted to only those available in the enterprise.
 
 **Correct Answers:**
-- **Actions can be published to an internal marketplace.**
-- **GitHub-verified actions can be collectively enabled for use in the enterprise.**
-- **Specific actions can individually be enabled for the organization, including version information.**
 
-**Supporting Statement:** These options provide ways to control which actions are available within your organization, allowing you to prioritize trusted sources and manage access.
+**(A)** Actions can be published to an internal marketplace.
+
+**(C)** GitHub-verified actions can be collectively enabled for use in the enterprise.
+
+**(D)** Specific actions can individually be enabled for the organization, including version information.
+
+**Explanation:**
+
+-Internal marketplaces allow private distribution.
+-GitHub-verified actions ensure trustworthiness.
+-Version control prevents unverified updates.
 
 ---
 
@@ -2052,17 +2140,26 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 67:** Disabling a workflow allows you to stop a workflow from being triggered without having to delete the file from the repo. In which of the following scenarios is disabling a workflow most useful? (Choose two)
 
 **Options:**
-- A workflow needs to be changed from running on a schedule to a manual trigger.
-- A workflow error produces too many, or wrong, requests, impacting external services negatively.
-- A workflow sends requests to a service that is down.
-- A workflow is configured to run on self-hosted runners.
-- A runner needs to have diagnostic logging enabled.
+
+**(A)** A workflow needs to be changed from running on a schedule to a manual trigger.
+
+**(B)** A workflow error produces too many, or wrong, requests, impacting external services negatively.
+
+**(C)** A workflow sends requests to a service that is down.
+
+**(D)** A workflow is configured to run on self-hosted runners.
+
+**(E)** A runner needs to have diagnostic logging enabled.
 
 **Correct Answers:**
-- **A workflow needs to be changed from running on a schedule to a manual trigger.**
-- **A workflow error produces too many, or wrong, requests, impacting external services negatively.**
 
-**Supporting Statement:** Disabling a workflow is useful when you need to temporarily stop its execution without making permanent changes to the workflow file. This is helpful for scenarios like switching to manual triggers or mitigating issues caused by errors.
+**(B)** A workflow error produces too many or wrong requests, impacting external services.
+
+**(C)** A workflow sends requests to a service that is down.
+
+**Explanation:**
+
+-Disabling prevents harmful automated execution until the issue is resolved.
 
 ---
 
@@ -2071,16 +2168,24 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 68:** Where should workflow files be stored to be triggered by events in a repository?
 
 **Options:**
-- .github/workflows/
-- workflows/
-- .github/actions/
-- anywhere
-- Nowhere; they must be attached to an action in the GitHub user interface.
+
+**(A)** .github/workflows/
+
+**(B)** workflows/
+
+**(C)** .github/actions/
+
+**(D)** anywhere
+
+**(E)** Nowhere; they must be attached to an action in the GitHub user interface.
 
 **Correct Answer:**
-- **.github/workflows/**
 
-**Supporting Statement:** Workflow files must be placed in the `.github/workflows/` directory within the repository to be recognized and triggered by GitHub Actions.
+**(A)** .github/workflows/
+
+**Explanation:**
+
+-GitHub workflows must be stored in .github/workflows/ for them to be triggered.
 
 ---
 
@@ -2089,16 +2194,24 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 69:** What are the most significant advantages of adding documentation while distributing custom actions? (Choose two)
 
 **Options:**
-- It provides an example of the action.
-- It shares the description of the action to the users.
-- It generates auto completion when using the action in a workflow.
-- It creates a `readme.md` for the consuming workflow.
+**(A)** It provides an example of the action.
+
+**(B)** It shares the description of the action to the users.
+
+**(C)** It generates auto completion when using the action in a workflow.
+
+**(D)** It creates a `readme.md` for the consuming workflow.
 
 **Correct Answers:**
-- **It shares the description of the action to the users.**
-- **It generates auto completion when using the action in a workflow.**
 
-**Supporting Statement:** Documentation is crucial for users to understand how to use an action. It helps them understand its purpose, inputs, outputs, and usage examples, and can often enable IDEs to provide auto-completion suggestions when using the action.
+**(A)** It provides an example of the action.
+
+**(B)** It shares the description of the action to the users.
+
+**Explanation:**
+
+-Examples help users understand how to use the action.
+-Descriptions make it easier for new users to adopt.
 
 ---
 
@@ -2107,14 +2220,20 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 70:** Which files are required for a Docker container action in addition to the source code? (Choose two)
 
 **Options:**
-- Actionfile
-- metadata.yml
-- Dockerfile
-- action.yml
+
+**(A)** Actionfile
+
+**(B)** metadata.yml
+
+**(C)** Dockerfile
+
+**(D)** action.yml
 
 **Correct Answers:**
-- **Dockerfile**
-- **action.yml**
+
+**(C)** Dockerfile
+
+**(D)** action.yml
 
 **Supporting Statement:**
 - The `Dockerfile` is essential for building the Docker image that will run the action.
@@ -2127,16 +2246,26 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 71:** Which of the following is the most common way to target a specific major release version?
 
 **Options:**
-- ```
+
+**(A)**
+  ```
   steps:
     - uses: actions/checkout
   ```
-- ```
+
+**(B)**
+  ```
   steps:
     - uses: actions/checkout@v3
   ```
--
 
+**Correct Answer:**
+
+**(B)**
+  ```
+  steps:
+    - uses: actions/checkout@v3
+  ```
 ---
 
 
@@ -2152,13 +2281,17 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 ```
 
 **Options:**
-- `shell: bash`
-- `with: python`
-- `working-directory: .github/python`
-- `shell: python`
+**(A)** `shell: bash`
+
+**(B)** `with: python`
+
+**(C)** `working-directory: .github/python`
+
+**(D)** `shell: python`
 
 **Correct Answer:**
-- `shell: python`
+
+**(D)** `shell: python`
 
 **Supporting Statement:** Since lines 3 and 4 contain Python code, specifying `shell: python` on line 5 tells the runner to interpret those lines as Python commands.
 
@@ -2169,15 +2302,20 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 73:** What is a valid scenario regarding environment secrets?
 
 **Options:**
-- ensuring only a specific step can access an environment secret
-- configuring environment secrets to automatically pull from Azure Key Vault
-- configuring environment secrets for connecting to GitHub Enterprise Server
-- ensuring a job cannot access environment secrets until approval is obtained from a required reviewer
+
+**(A)** ensuring only a specific step can access an environment secret
+
+**(B)** configuring environment secrets to automatically pull from Azure Key Vault
+
+**(C)** configuring environment secrets for connecting to GitHub Enterprise Server
+
+**(D)** ensuring a job cannot access environment secrets until approval is obtained from a required reviewer
 
 **Correct Answer:**
-- **ensuring only a specific step can access an environment secret**
 
-**Supporting Statement:** This scenario demonstrates a valid use case for controlling access to sensitive information within a workflow.
+**(D)** ensuring a job cannot access environment secrets until approval is obtained from a required reviewer
+
+
 
 ---
 
@@ -2186,14 +2324,20 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 74:** By default, which workflows can use an action stored in an internal repository? (Choose two)
 
 **Options:**
-- public repositories owned by the same organization as the enterprise
-- internal repositories owned by the same organization as the enterprise
-- private repositories owned by an organization of the enterprise
-- selected public repositories outside of the enterprise
+
+**(A)** public repositories owned by the same organization as the enterprise
+
+**(B)** internal repositories owned by the same organization as the enterprise
+
+**(C)** private repositories owned by an organization of the enterprise
+
+**(D)** selected public repositories outside of the enterprise
 
 **Correct Answers:**
-- **internal repositories owned by the same organization as the enterprise**
-- **private repositories owned by an organization of the enterprise**
+
+**(B)** internal repositories owned by the same organization as the enterprise
+
+**(C)** private repositories owned by an organization of the enterprise
 
 **Supporting Statement:** By default, workflows within an enterprise can access actions stored in internal repositories (private or internal) owned by organizations belonging to the same enterprise.
 
@@ -2204,26 +2348,36 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 75:** You are a DevOps engineer in ABC Corp. You need to schedule your deployment workflow twice a week at 7:45 AM on Wednesday and Saturday. What is the appropriate YAML structure?
 
 **Options:**
-- ```yaml
+
+**(A)**
+  ```yaml
   on:
     cron: '45 7 * * 3,6'
   ```
-- ```yaml
+
+**(B)**
+  ```yaml
   on:
     cron:
       - schedule: '45 7 * * 3,6'
   ```
-- ```yaml
+
+**(C)**
+  ```yaml
   schedule: '45 7 * * 3,6'
   ```
-- ```yaml
+
+**(D)**
+  ```yaml
   on:
     schedule:
       - cron: '45 7 * * 3,6'
   ```
 
 **Correct Answer:**
-- ```yaml
+
+**(D)**
+  ```yaml
   on:
     schedule:
       - cron: '45 7 * * 3,6'
@@ -2238,19 +2392,24 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 76:** You are reaching your organization's storage limit for GitHub artifacts and packages. What should you do to prevent the storage limit from being reached? (Choose two)
 
 **Options:**
-- Disable branch protections in the repository.
-- Use self-hosted runners for all workflow runs.
-- Configure the repo to use Git Large File Storage.
-- Delete artifacts from the repositories manually.
-- Configure the artifact and log retention period.
+
+**(A)** Disable branch protections in the repository.
+
+**(B)** Use self-hosted runners for all workflow runs.
+
+**(C)** Configure the repo to use Git Large File Storage.
+
+**(D)** Delete artifacts from the repositories manually.
+
+**(E)** Configure the artifact and log retention period.
 
 **Correct Answers:**
-- **Configure the repo to use Git Large File Storage.**
-- **Configure the artifact and log retention period.**
 
-**Supporting Statement:** 
-  * Git Large File Storage (LFS) stores large files outside the main repository, reducing storage usage.
-  * Configuring retention periods for artifacts and logs helps automatically delete old data, freeing up space.
+ **(D)** Delete artifacts from the repositories manually.
+ 
+ **(E)**Configure the artifact and log retention period.
+
+
 
 ---
 
@@ -2259,14 +2418,20 @@ GitHub Enterprise allows strict control over action usage via internal marketpla
 **Question 77:** As a developer, you have configured an IP allow list on a GitHub organization. Which effects does the IP allow list have on GitHub Actions? (Choose two)
 
 **Options:**
-- You must allow GitHub Actions's IP address ranges in order to use marketplace actions.
-- You can use standard GitHub-hosted runners since their IP addresses are automatically allowed.
-- You can use GitHub-hosted larger runners since they can be configured with static IP addresses.
-- You can use self-hosted runners with known IP addresses.
+
+**(A)** You must allow GitHub Actions's IP address ranges in order to use marketplace actions.
+
+**(B)** You can use standard GitHub-hosted runners since their IP addresses are automatically allowed.
+
+**(C)** You can use GitHub-hosted larger runners since they can be configured with static IP addresses.
+
+**(D)** You can use self-hosted runners with known IP addresses.
 
 **Correct Answers:**
-- **You must allow GitHub Actions's IP address ranges in order to use marketplace actions.**
-- **You can use self-hosted runners with known IP addresses.**
+
+**(A)** You must allow GitHub Actions's IP address ranges in order to use marketplace actions.
+
+**(D)**You can use self-hosted runners with known IP addresses.
 
 **Supporting Statement:** 
 * Marketplace actions run on GitHub's infrastructure, so their IP addresses need to be allowed for communication.
